@@ -97,6 +97,7 @@ export const HistoryButton: React.FC<HistoryButtonProps> = ({onClick, text}) => 
         root: {
             width: '180px',
             border: `1px solid #D1D1D1`,
+            marginRight: '20px',
           },
           rootHovered: {
             border: `1px solid #D1D1D1`,
