@@ -63,7 +63,7 @@ export const Link1Button: React.FC<Link1ButtonProps> = ({onClick, content}) => {
         color: '#FFFFFF',
       },
       label: {
-        fontWeight: 650,
+        fontWeight: 600,
         fontSize: 18,
         lineHeight: '20px',
         color: '#2b2967',
