@@ -4,7 +4,7 @@ import logging
 import requests
 import openai
 from azure.identity import DefaultAzureCredential
-from flask import Flask, Response, request, jsonify, send_from_directory
+from flask import Flask, Response, request, jsonify, send_from_directory, render_template
 from dotenv import load_dotenv
 
 from backend.auth.auth_utils import get_authenticated_user_details
@@ -13,6 +13,15 @@ from backend.history.cosmosdbservice import CosmosConversationClient
 load_dotenv()
 
 app = Flask(__name__, static_folder="static")
+
+@app.route("/permissionDenied")
+def not_enough_permission():
+    return render_template("permissionDenied.html")
+
+@app.errorhandler(404)
+def not_found(e):
+  return render_template("404.html")
+
 
 # Static Files
 @app.route("/")
@@ -614,4 +623,4 @@ def generate_title(conversation_messages):
         return messages[-2]['content']
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug = True)

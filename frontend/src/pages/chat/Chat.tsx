@@ -8,8 +8,7 @@ import rehypeRaw from "rehype-raw";
 import uuid from 'react-uuid';
 
 import styles from "./Chat.module.css";
-// import Azure from "../../assets/Azure.svg";
-import Azure from "../../assets/hai.png";
+import holxLogoExtended from "../../assets/genie2.png";
 
 import {
     ChatMessage,
@@ -522,7 +521,8 @@ const Chat = () => {
 
     return (
         <div className={styles.container} role="main">
-            {showAuthMessage ? (
+            {
+            showAuthMessage ? (
                 <Stack className={styles.chatEmptyState}>
                     <ShieldLockRegular className={styles.chatIcon} style={{color: 'darkorange', height: "200px", width: "200px"}}/>
                     <h1 className={styles.chatEmptyStateTitle}>Authentication Not Configured</h1>
@@ -541,12 +541,12 @@ const Chat = () => {
                         {!messages || messages.length < 1 ? (
                             <Stack className={styles.chatEmptyState}>
                                 <img
-                                    src={Azure}
+                                    src={holxLogoExtended}
                                     className={styles.chatIcon}
                                     aria-hidden="true"
                                 />
-                                <h1 className={styles.chatEmptyStateTitle}>Start chatting</h1>
-                                <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to answer your questions</h2>
+                                <h1 className={styles.chatEmptyStateTitle}>Hologic Genie</h1>
+                                <h2 className={styles.chatEmptyStateSubtitle}>Your Personal AI Assistant for Enhanced Productivity</h2>
                             </Stack>
                         ) : (
                             <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? "40px" : "0px"}} role="log">
@@ -614,19 +614,27 @@ const Chat = () => {
                                         icon: { 
                                             color: '#FFFFFF',
                                         },
+                                        iconHovered: {
+                                            color: '#FFFFFF',
+                                        },
                                         root: {
                                             color: '#FFFFFF',
-                                            background: "radial-gradient(109.81% 107.82% at 100.1% 90.19%, #0F6CBD 33.63%, #2D87C3 70.31%, #8DDDD8 100%)"
+                                            background: "#317793",
+                                        },
+                                        rootHovered: {
+                                            color: '#FFFFFF',
+                                            background: "#af3db2",
                                         },
                                         rootDisabled: {
                                             background: "#BDBDBD"
-                                        }
+                                        },
                                     }}
                                     className={styles.newChatIcon}
                                     iconProps={{ iconName: 'Add' }}
                                     onClick={newChat}
                                     disabled={disabledButton()}
                                     aria-label="start a new chat button"
+                                    title="Start a new Chat"
                                 />}
                                 <CommandBarButton
                                     role="button"
@@ -634,17 +642,27 @@ const Chat = () => {
                                         icon: { 
                                             color: '#FFFFFF',
                                         },
+                                        iconHovered: {
+                                            color: '#FFFFFF',
+                                        },
                                         root: {
                                             color: '#FFFFFF',
-                                            background: disabledButton() ? "#BDBDBD" : "radial-gradient(109.81% 107.82% at 100.1% 90.19%, #0F6CBD 33.63%, #2D87C3 70.31%, #8DDDD8 100%)",
+                                            // background: disabledButton() ? "#BDBDBD" : "radial-gradient(109.81% 107.82% at 100.1% 90.19%, #bb29bb 45.31%, #2b2967 100%)",
+                                            background: disabledButton() ? "#BDBDBD" : "#317793",
                                             cursor: disabledButton() ? "" : "pointer"
                                         },
+                                        rootHovered: {
+                                            color: '#FFFFFF',
+                                            background: disabledButton() ? "#BDBDBD" : "#af3db2",
+                                            cursor: disabledButton() ? "" : "pointer"
+                                        }
                                     }}
                                     className={appStateContext?.state.isCosmosDBAvailable?.status !== CosmosDBStatus.NotConfigured ? styles.clearChatBroom : styles.clearChatBroomNoCosmos}
-                                    iconProps={{ iconName: 'Broom' }}
+                                    iconProps={{ iconName: 'EraseTool' }}
                                     onClick={clearChat}
                                     disabled={disabledButton()}
                                     aria-label="clear chat button"
+                                    title="Clear Chat"
                                 />
                                 <Dialog
                                     hidden={hideErrorDialog}
@@ -686,7 +704,8 @@ const Chat = () => {
                 )}
                 {(appStateContext?.state.isChatHistoryOpen && appStateContext?.state.isCosmosDBAvailable?.status !== CosmosDBStatus.NotConfigured) && <ChatHistoryPanel/>}
                 </Stack>
-            )}
+            )
+            }
         </div>
     );
 };

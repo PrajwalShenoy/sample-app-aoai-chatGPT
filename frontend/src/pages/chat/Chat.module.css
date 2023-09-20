@@ -45,13 +45,14 @@
     line-height: 24px;
     margin-top: 36px;
     margin-bottom: 0px;
+    color: #2b2967;
 }
 
 .chatEmptyStateSubtitle {
     margin-top: 20px;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 150%;
     display: flex;
     align-items: flex-end;
@@ -61,7 +62,7 @@
 }
 
 .chatIcon {
-    height: 62px;
+    height: 150px;
     /* width: 62px; */
 }
 

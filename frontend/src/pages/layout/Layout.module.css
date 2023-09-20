@@ -111,3 +111,39 @@
     align-items: center;
     color: #242424;
 }
+
+.customButton{
+    font-style: normal;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    border-color: transparent;
+    text-decoration: none;
+    background-color: #0F6CBD;
+    color: black;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footerLogo {
+    height: 20px;
+    margin-top: 0;
+    margin-left: 30px;
+    /* margin-bottom: 20px; */
+    margin-right: 5px;
+}
+
+.footerTextLeft {
+    font-size: 10px;
+}
+
+.footerTextRight {
+    font-size: 10px;
+    float: inline-end;
+    margin-left:auto;
+    margin-right: 30px;
+}

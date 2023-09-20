@@ -1,11 +1,11 @@
 import { Outlet, Link } from "react-router-dom";
 import styles from "./Layout.module.css";
-// import Azure from "../../assets/Azure.svg";
-import Azure from "../../assets/hai.png";
+import holxLogo from "../../assets/genie1.png";
+import hologicLogo from "../../assets/hologicLogo.png";
 import { CopyRegular, ShareRegular } from "@fluentui/react-icons";
 import { CommandBarButton, Dialog, Stack, TextField, ICommandBarStyles, IButtonStyles, DefaultButton  } from "@fluentui/react";
 import { useContext, useEffect, useState } from "react";
-import { HistoryButton, ShareButton } from "../../components/common/Button";
+import { HistoryButton, ShareButton, Link1Button } from "../../components/common/Button";
 import { AppStateContext } from "../../state/AppProvider";
 import { CosmosDBStatus } from "../../api";
 
@@ -74,20 +74,32 @@ const Layout = () => {
                 // className={styles.headerContainer}
                 >
                     <Stack horizontal verticalAlign="center">
-                        <img
-                            src={Azure}
+                        {/* <img
+                            src={holxLogo}
                             className={styles.headerIcon}
                             aria-hidden="true"
-                        />
+                        /> */}
                         <Link to="/" className={styles.headerTitleContainer}>
-                            <h1 className={styles.headerTitle}>&nbsp;</h1>
+                            <h1 className={styles.headerTitle}>
+                                <img
+                                    src={holxLogo}
+                                    className={styles.headerIcon}
+                                    aria-hidden="true"
+                                />
+                            </h1>
                         </Link>
                     </Stack>
                     <Stack horizontal tokens={{ childrenGap: 4 }}>
+                        <div>
+                            <Link1Button onClick={()=> window.open("https://hologic.sharepoint.com/sites/AIatHologic/SitePages/Genie.aspx", "_blank")} content="About Genie"/>
+                            <Link1Button onClick={()=> window.open("https://hologic.sharepoint.com/sites/AIatHologic/", "_blank")} content="AI at Hologic"/>
+                            <Link1Button onClick={()=> window.open("https://hologic.sharepoint.com/sites/AIatHologic/SitePages/Prompt-Library.aspx", "_blank")} content="Prompt Library"/>
+                            {/* <Link1Button onClick={()=> window.open("https://hologic.sharepoint.com/sites/AIatHologic/SitePages/Prompt-Library.aspx", "_blank")} content="Request Access"/> */}
+                        </div>
                             {(appStateContext?.state.isCosmosDBAvailable?.status !== CosmosDBStatus.NotConfigured) && 
                                 <HistoryButton onClick={handleHistoryClick} text={appStateContext?.state?.isChatHistoryOpen ? "Hide chat history" : "Show chat history"}/>    
                             }
-                            <ShareButton onClick={handleShareClick} />
+                            {/* <ShareButton onClick={handleShareClick} /> */}
                     </Stack>
 
                 </Stack>
@@ -131,6 +143,18 @@ const Layout = () => {
                     </div>
                 </Stack>
             </Dialog>
+            <footer>
+                <img
+                    src={hologicLogo}
+                    className={styles.footerLogo}
+                    aria-hidden="true"
+                />
+                <span className={styles.footerTextLeft}>© Copyright 2023 Hologic, Inc. All rights reserved.</span>
+                <span className={styles.footerTextRight}>
+                    <a href="https://www.hologic.com/privacy-policy">Privacy Policy</a>
+                    <a href="https://www.hologic.com/terms-conditions">Terms & Conditions</a>
+                </span>
+            </footer>
         </div>
     );
 };
